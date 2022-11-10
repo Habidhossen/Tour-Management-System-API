@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const router = require("./routes/tour.route");
 require("dotenv").config();
 require("./config/db_conn");
 const port = process.env.PORT || 4000;
@@ -19,6 +20,7 @@ app.get("/", (req, res) => {
 });
 
 // Tour Route
+app.use("/api/v1/tour", router);
 
 // If Route not found
 app.use((req, res, next) => {
