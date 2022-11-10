@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
+require("./config/db_conn");
 const port = process.env.PORT || 4000;
 
 const app = express();
@@ -16,6 +17,8 @@ app.listen(port, () => {
 app.get("/", (req, res) => {
   res.status(200).send("Welcome to Travel Management System API Server");
 });
+
+// Tour Route
 
 // If Route not found
 app.use((req, res, next) => {
