@@ -13,9 +13,9 @@ const router = express.Router();
 router.post("/tours", createTour);
 router.get("/tours", getAllTours);
 router.get("/tours/:id", getSpecificTour);
-router.patch("/tours/:id", updateTour);
-router.get("/tours/trending", trendingTour);
-router.get("/tours/cheapest", cheapestTour);
-router.get("/tours/featured", featuredTour);
+router.patch("/tour/:id", updateTour);
+router.get("/tour/trending", trendingTour);
+router.get("/tour/cheapest", cheapestTour);
+router.get("/tour/featured", featuredTour);
 
 module.exports = router;
