@@ -21,24 +21,60 @@ exports.createTour = async (req, res) => {
 
 exports.getAllTours = async (req, res) => {
   try {
-  } catch (error) {}
+    const tours = await Tour.find();
+    res.status(200).json({
+      status: "success",
+      data: tours,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: fail,
+      message: "Can't get the data",
+      error: error.message,
+    });
+  }
 };
+
 exports.getSpecificTour = async (req, res) => {
   try {
-  } catch (error) {}
+    const tourId = req.params.id;
+    /* fon finding data you can use findOne() or findById() method */
+    const tour = await Tour.findById(tourId);
+
+    /* increase views for this tour */
+    const incViewCount = await Tour.updateOne(
+      { _id: tourId },
+      { $inc: { views: 1 } }
+    );
+
+    res.status(200).json({
+      status: "success",
+      data: tour,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: fail,
+      message: "Can't get the data",
+      error: error.message,
+    });
+  }
 };
+
 exports.updateTour = async (req, res) => {
   try {
   } catch (error) {}
 };
+
 exports.trendingTour = async (req, res) => {
   try {
   } catch (error) {}
 };
+
 exports.cheapestTour = async (req, res) => {
   try {
   } catch (error) {}
 };
+
 exports.featuredTour = async (req, res) => {
   try {
   } catch (error) {}
