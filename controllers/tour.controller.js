@@ -72,7 +72,18 @@ exports.trendingTour = async (req, res) => {
 
 exports.cheapestTour = async (req, res) => {
   try {
-  } catch (error) {}
+    const cheapestTour = await Tour.find().sort("price").limit(3);
+    res.status(200).json({
+      status: "success",
+      data: cheapestTour,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: fail,
+      message: "Can't get the data",
+      error: error.message,
+    });
+  }
 };
 
 exports.featuredTour = async (req, res) => {
